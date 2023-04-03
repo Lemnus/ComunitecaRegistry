@@ -1,1 +1,33 @@
-<p>new-event-entry works!</p>
+<h3 class="mt-2">Register new event</h3>
+<form class="p-2">
+  <div class="form-group">
+    <label for="eventName">Event name</label>
+    <input class="form-control" id="eventName">
+  </div>
+
+  <div class="form-group mt-2">
+    <label for="eventDate">Event date</label>
+    <input class="form-control" id="eventDate">
+  </div>
+
+  <div class="form-group mt-2">
+    <label for="notes">Notes</label>
+    <input class="form-control" id="notes">
+  </div>
+
+  <div class="mt-4">
+    <button
+      class="btn btn-danger rounded-pill px-3"
+      routerLink="/"
+      routerLinkActive="active"
+    >Back</button>
+
+    <button
+      class="btn btn-success rounded-pill px-3 mx-4"
+      routerLink="/new"
+      routerLinkActive="active"
+      type="submit"
+    >Add new event</button>
+  </div>
+
+</form>
