@@ -1,9 +1,11 @@
 <div class="body p-2 border mx-3">
-  <p>Name:</p>
-  <p>Date:</p>
-  <p>Notes:</p>
   <div>
-    <button type="button" class="btn btn-primary">Check registration</button>
-    <button type="button" class="btn success">Register for event</button>
+    <p>Name: {{event.name}}</p>
+    <p>Date: {{event.date}}</p>
+    <p *ngIf="event.notes && event.notes.length">Notes: {{event.notes}}</p>
+  </div>
+  <div class="button-container">
+    <button type="button" class="btn btn-primary mx-2">Check registration</button>
+    <button type="button" class="btn btn-success mx-2">Register for event</button>
   </div>
 </div>

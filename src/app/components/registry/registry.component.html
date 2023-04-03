@@ -4,7 +4,5 @@
   routerLink="/new" routerLinkActive="active"
 >Add new event</button>
 <div class="d-flex mt-4 flex-wrap">
-  <app-event-entry></app-event-entry>
-  <app-event-entry></app-event-entry>
-  <app-event-entry></app-event-entry>
+  <app-event-entry *ngFor="let event of events" [event]="event"></app-event-entry>
 </div>

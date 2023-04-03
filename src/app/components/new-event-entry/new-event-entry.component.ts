@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {EventService} from "../../services/event.service";
+import {ComunitecaEvent} from "../../model/Event";
 
 @Component({
   selector: 'app-new-event-entry',
@@ -8,7 +10,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 })
 export class NewEventEntryComponent {
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private eventService: EventService) {
   }
 
   newEventForm = this.formBuilder.group({
@@ -18,6 +20,6 @@ export class NewEventEntryComponent {
   });
 
   onSubmit() {
-    console.log(this.newEventForm.value);
+    this.eventService.registerNewEvent(this.newEventForm.value as ComunitecaEvent);
   }
 }

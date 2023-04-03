@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {ComunitecaEvent} from "../../model/Event";
 
 @Component({
   selector: 'app-event-entry',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./event-entry.component.scss']
 })
 export class EventEntryComponent {
+
+  @Input()
+  event: ComunitecaEvent = {name: 's', date: 's'};
 
 }
