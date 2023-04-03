@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-new-event-entry',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class NewEventEntryComponent {
 
+  constructor(private formBuilder: FormBuilder) {
+  }
+
+  newEventForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    date: ['', Validators.required],
+    notes: ''
+  });
+
+  onSubmit() {
+    console.log(this.newEventForm.value);
+  }
 }

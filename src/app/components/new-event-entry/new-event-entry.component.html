@@ -1,18 +1,32 @@
 <h3 class="mt-2">Register new event</h3>
-<form class="p-2">
+<form
+  class="p-2"
+  [formGroup]="newEventForm"
+  (ngSubmit)="onSubmit()"
+>
   <div class="form-group">
     <label for="eventName">Event name</label>
-    <input class="form-control" id="eventName">
+    <input
+      class="form-control"
+      id="eventName"
+      formControlName="name">
   </div>
 
   <div class="form-group mt-2">
     <label for="eventDate">Event date</label>
-    <input class="form-control" id="eventDate">
+    <input
+      class="form-control"
+      id="eventDate"
+      formControlName="date">
   </div>
 
   <div class="form-group mt-2">
     <label for="notes">Notes</label>
-    <input class="form-control" id="notes">
+    <input
+      class="form-control"
+      id="notes"
+      formControlName="notes"
+      placeholder="Optional">
   </div>
 
   <div class="mt-4">
@@ -27,6 +41,7 @@
       routerLink="/new"
       routerLinkActive="active"
       type="submit"
+      [disabled]="!newEventForm.valid"
     >Add new event</button>
   </div>
 
