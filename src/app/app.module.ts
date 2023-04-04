@@ -9,13 +9,16 @@ import {RegistryComponent} from './components/registry/registry.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import { UserEventRegistrationComponent } from './components/modal/user-event-registration/user-event-registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewEventEntryComponent,
     EventEntryComponent,
-    RegistryComponent
+    RegistryComponent,
+    UserEventRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import {CommonModule} from "@angular/common";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
