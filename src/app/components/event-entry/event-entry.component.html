@@ -5,7 +5,7 @@
     <p *ngIf="event.notes && event.notes.length">Notes: {{event.notes}}</p>
   </div>
   <div class="button-container">
-    <button type="button" class="btn btn-primary mx-2">Check registration</button>
-    <button type="button" class="btn btn-success mx-2">Register for event</button>
+    <button type="button" class="btn btn-primary mx-2" (click)="checkRegistration()">Check registration</button>
+    <button type="button" class="btn btn-success mx-2" (click)="openRegistration()">Register for event</button>
   </div>
 </div>

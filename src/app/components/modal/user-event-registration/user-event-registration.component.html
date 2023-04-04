@@ -1,0 +1,15 @@
+<div class="mt-2 mx-2 mb-0 d-flex flex-column">
+  <h5>Enter your name:</h5>
+  <form [formGroup]="userNameForm">
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="userName"
+        formControlName="name">
+    </div>
+  </form>
+  <div class="mt-2">
+    <button type="button" class="btn btn-danger m-2" (click)="exit()">Exit</button>
+    <button type="button" class="btn btn-primary m-2" (click)="confirm()" [disabled]="!userNameForm.valid">Confirm</button>
+  </div>
+</div>
