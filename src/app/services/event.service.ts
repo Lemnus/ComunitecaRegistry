@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {ComunitecaEvent} from "../model/Event";
 
 @Injectable({
@@ -21,6 +21,14 @@ export class EventService {
 
   registerNewEvent(event: ComunitecaEvent) {
     this.api.post('event', event).subscribe(() => this.updateEvents());
+  }
+
+  registerPersonForEvent(eventName: string, userName: string): Observable<any> {
+    return this.api.patch('event/' + eventName + '/' + userName);
+  }
+
+  checkRegistrationForEvent(eventName: string, userName: string): Observable<any> {
+    return this.api.get('event/' + eventName + '/' + userName);
   }
 
   private updateEvents() {

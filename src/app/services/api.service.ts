@@ -18,4 +18,8 @@ export class ApiService {
   public get(endpoint: string): any {
     return this.http.get(this.baseUrl + '/' + endpoint);
   }
+
+  public patch(endpoint: string): any {
+    return this.http.patch(this.baseUrl + '/' + endpoint, null);
+  }
 }

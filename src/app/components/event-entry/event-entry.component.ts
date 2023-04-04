@@ -14,6 +14,8 @@ export class EventEntryComponent {
   @Input()
   event: ComunitecaEvent = {name: 's', date: 's'};
 
+  isRegistered: boolean = false;
+
   constructor(private dialog: MatDialog, private eventService: EventService) {
   }
 
@@ -25,7 +27,11 @@ export class EventEntryComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result)
-        console.log(`checkRegistration: ${result}`);
+      {
+        this.eventService
+          .checkRegistrationForEvent(this.event.name, result)
+          .subscribe(e => this.isRegistered = e);
+      }
     });
   }
 
@@ -37,7 +43,9 @@ export class EventEntryComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result)
-        console.log(`openRegistration: ${result}`);
+      {
+        this.eventService.registerPersonForEvent(this.event.name, result).subscribe();
+      }
     });
   }
 }
