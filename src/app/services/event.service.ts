@@ -20,7 +20,7 @@ export class EventService {
   }
 
   registerNewEvent(event: ComunitecaEvent) {
-    this.api.post('event', event).subscribe((e: any) => console.log(e));
+    this.api.post('event', event).subscribe(() => this.updateEvents());
   }
 
   private updateEvents() {
