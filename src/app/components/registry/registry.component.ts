@@ -15,6 +15,7 @@ export class RegistryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe(e => this.events = e)
+    this.eventService.getEventsObservable().subscribe(e => this.events = e);
+    // this.eventService.updateEvents();
   }
 }

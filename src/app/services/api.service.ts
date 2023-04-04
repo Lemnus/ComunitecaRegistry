@@ -6,16 +6,16 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ApiService {
 
-  private baseUrl = '';
+  private baseUrl = 'https://erv77k6r4c.execute-api.eu-central-1.amazonaws.com';
 
   constructor(private http: HttpClient) {
   }
 
-  public post(endpoint: string, body: any) {
+  public post(endpoint: string, body: any): any {
     return this.http.post(this.baseUrl + '/' + endpoint, body);
   }
 
-  public get(endpoint: string) {
+  public get(endpoint: string): any {
     return this.http.get(this.baseUrl + '/' + endpoint);
   }
 }

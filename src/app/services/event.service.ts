@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
-import {Observable, of} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 import {ComunitecaEvent} from "../model/Event";
 
 @Injectable({
@@ -8,35 +8,26 @@ import {ComunitecaEvent} from "../model/Event";
 })
 export class EventService {
 
-  private events: Observable<ComunitecaEvent[]> = of([]);
-  public _events: ComunitecaEvent[] = [];
+  private result : ComunitecaEvent[] = [];
+  private events: Subject<ComunitecaEvent[]> = new BehaviorSubject(this.result);
 
   constructor(private api: ApiService) {
-    this.events = this.getEvents();
+    this.updateEvents();
+  }
+
+  getEventsObservable() {
+    return this.events.asObservable();
   }
 
   registerNewEvent(event: ComunitecaEvent) {
-    console.log(event);
-    // this.api.post()
-    this._events.push(event);
+    this.api.post('event', event).subscribe((e: any) => console.log(e));
   }
 
-  getEvents() {
-    return of([
-      {
-        name: 'Ev1',
-        date: 'Sun 18th, 15:30-16:30'
-      } as ComunitecaEvent,
-      {
-        name: 'Ev2',
-        date: 'Sun 20th, 15:30-16:30',
-        notes: 'Notes sgfdhg jgfgy  fgh gf'
-      } as ComunitecaEvent
-    ])
+  private updateEvents() {
+    this.api.get('events').subscribe(
+      (e: ComunitecaEvent[]) => {
+        this.events.next(e as ComunitecaEvent[]);
+      }
+    );
   }
-
-  // getEvents(): Observable<Event[]> {
-  //   // @ts-ignore
-  //   return this.api.get('');
-  // }
 }
