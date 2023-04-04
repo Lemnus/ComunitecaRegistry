@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {EventService} from "../../services/event.service";
 import {ComunitecaEvent} from "../../model/Event";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-event-entry',
@@ -10,7 +11,10 @@ import {ComunitecaEvent} from "../../model/Event";
 })
 export class NewEventEntryComponent {
 
-  constructor(private formBuilder: FormBuilder, private eventService: EventService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private eventService: EventService,
+    private router: Router) {
   }
 
   newEventForm = this.formBuilder.group({
@@ -21,5 +25,6 @@ export class NewEventEntryComponent {
 
   onSubmit() {
     this.eventService.registerNewEvent(this.newEventForm.value as ComunitecaEvent);
+    this.router.navigate(['']);
   }
 }
