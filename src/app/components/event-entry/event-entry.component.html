@@ -3,7 +3,7 @@
     <p>Name: {{event.name}}</p>
     <p>Date: {{event.date}}</p>
     <p *ngIf="event.notes && event.notes.length">Notes: {{event.notes}}</p>
-    <p *ngIf="isRegistered">Registered</p>
+    <p *ngIf="isRegistered" class="registered-confirmation">Registered</p>
   </div>
   <div class="button-container">
     <button type="button" class="btn btn-primary mx-2" (click)="checkRegistration()">Check registration</button>

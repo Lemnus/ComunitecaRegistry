@@ -4,6 +4,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+
+  .registered-confirmation {
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    font-size: 1.5rem;
+    transform: rotate(-25deg);
+    color: forestgreen;
+  }
 
   .button-container {
     display: flex;
