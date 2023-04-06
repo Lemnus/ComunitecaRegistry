@@ -31,14 +31,7 @@ export class EventEntryComponent {
     dialogRef.afterClosed().subscribe(result => {
       if(result)
       {
-        if(result == 'ALL')
-          this.eventService
-            .checkRegistrationForEventForAll(this.event.name)
-            .subscribe((e: ComunitecaEvent[]) => {
-              this.openAllRegisteredUsersModal(e[0].registeredUsers);
-            });
-        else
-          this.eventService
+        this.eventService
             .checkRegistrationForEvent(this.event.name, result)
             .subscribe(e => this.isRegistered = e);
       }
@@ -57,6 +50,14 @@ export class EventEntryComponent {
         this.eventService.registerPersonForEvent(this.event.name, result).subscribe();
       }
     });
+  }
+
+  getAllRegisteredUsers() {
+    this.eventService
+      .checkRegistrationForEventForAll(this.event.name)
+      .subscribe((e: ComunitecaEvent[]) => {
+        this.openAllRegisteredUsersModal(e[0].registeredUsers);
+      });
   }
 
   private openAllRegisteredUsersModal(users: any) {

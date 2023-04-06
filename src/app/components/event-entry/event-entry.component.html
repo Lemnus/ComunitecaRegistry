@@ -1,5 +1,10 @@
 <div class="body p-2 border mx-3">
   <div>
+    <mat-icon
+      (click)="getAllRegisteredUsers()"
+      class="all-users"
+      matTooltip="Get all registered users"
+    >contacts</mat-icon>
     <p>Name: {{event.name}}</p>
     <p>Date: {{event.date}}</p>
     <p *ngIf="event.notes && event.notes.length">Notes: {{event.notes}}</p>
@@ -7,6 +12,6 @@
   </div>
   <div class="button-container">
     <button type="button" class="btn btn-primary mx-2" (click)="checkRegistration()">Check registration</button>
-    <button type="button" class="btn btn-success mx-2" (click)="openRegistration()">Register for event</button>
+    <button type="button" class="btn btn-success mx-2" (click)="openRegistration()">Register</button>
   </div>
 </div>

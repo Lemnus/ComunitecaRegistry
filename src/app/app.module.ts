@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { AllRegisteredUsersModalComponent } from './components/modal/all-registered-users-modal/all-registered-users-modal.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -25,16 +27,18 @@ import { AllRegisteredUsersModalComponent } from './components/modal/all-registe
     AllRegisteredUsersModalComponent
   ],
   entryComponents: [UserEventRegistrationComponent],
-    imports: [
-        MatDialogModule,
-        BrowserModule,
-        CommonModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatCheckboxModule,
-    ],
+  imports: [
+    MatDialogModule,
+    BrowserModule,
+    CommonModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatTooltipModule,
+  ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],

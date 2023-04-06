@@ -24,8 +24,4 @@ export class UserEventRegistrationComponent {
   exit() {
     this.dialogRef.close(null);
   }
-
-  getAll() {
-    this.dialogRef.close('ALL');
-  }
 }
