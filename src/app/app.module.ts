@@ -13,6 +13,7 @@ import { UserEventRegistrationComponent } from './components/modal/user-event-re
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { AllRegisteredUsersModalComponent } from './components/modal/all-registered-users-modal/all-registered-users-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     NewEventEntryComponent,
     EventEntryComponent,
     RegistryComponent,
-    UserEventRegistrationComponent
+    UserEventRegistrationComponent,
+    AllRegisteredUsersModalComponent
   ],
   entryComponents: [UserEventRegistrationComponent],
     imports: [

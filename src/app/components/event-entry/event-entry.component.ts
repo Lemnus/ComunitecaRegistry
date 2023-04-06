@@ -3,6 +3,9 @@ import {ComunitecaEvent} from "../../model/Event";
 import {MatDialog} from "@angular/material/dialog";
 import {UserEventRegistrationComponent} from "../modal/user-event-registration/user-event-registration.component";
 import {EventService} from "../../services/event.service";
+import {
+  AllRegisteredUsersModalComponent
+} from "../modal/all-registered-users-modal/all-registered-users-modal.component";
 
 @Component({
   selector: 'app-event-entry',
@@ -32,7 +35,7 @@ export class EventEntryComponent {
           this.eventService
             .checkRegistrationForEventForAll(this.event.name)
             .subscribe((e: ComunitecaEvent[]) => {
-              console.log(e[0].registeredUsers);
+              this.openAllRegisteredUsersModal(e[0].registeredUsers);
             });
         else
           this.eventService
@@ -54,5 +57,13 @@ export class EventEntryComponent {
         this.eventService.registerPersonForEvent(this.event.name, result).subscribe();
       }
     });
+  }
+
+  private openAllRegisteredUsersModal(users: any) {
+    let modalRef = this.dialog.open(AllRegisteredUsersModalComponent, {
+      width: '360px',
+    });
+
+    modalRef.componentInstance.users = users;
   }
 }
