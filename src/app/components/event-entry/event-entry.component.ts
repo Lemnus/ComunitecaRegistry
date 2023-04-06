@@ -24,7 +24,8 @@ export class EventEntryComponent {
 
   checkRegistration() {
     let dialogRef = this.dialog.open(UserEventRegistrationComponent, {
-      width: '320px',
+      width: '340px',
+      height: '180px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -39,7 +40,8 @@ export class EventEntryComponent {
 
   openRegistration() {
     let dialogRef = this.dialog.open(UserEventRegistrationComponent, {
-      width: '320px',
+      width: '340px',
+      height: '180px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
