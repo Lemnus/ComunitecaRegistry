@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 
@@ -18,10 +18,14 @@ export class UserEventRegistrationComponent {
   }
 
   confirm() {
-    this.dialogRef.close(this.userNameForm.controls.name.value);
+      this.dialogRef.close(this.userNameForm.controls.name.value);
   }
 
   exit() {
     this.dialogRef.close(null);
+  }
+
+  getAll() {
+    this.dialogRef.close('ALL');
   }
 }

@@ -31,6 +31,10 @@ export class EventService {
     return this.api.get('event/' + eventName + '/' + userName);
   }
 
+  checkRegistrationForEventForAll(eventName: string): Observable<any> {
+    return this.api.get('event/' + eventName + '/users');
+  }
+
   private updateEvents() {
     this.api.get('events').subscribe(
       (e: ComunitecaEvent[]) => {

@@ -21,16 +21,23 @@ export class EventEntryComponent {
 
   checkRegistration() {
     let dialogRef = this.dialog.open(UserEventRegistrationComponent, {
-      height: '150px',
+      height: '180px',
       width: '320px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result)
       {
-        this.eventService
-          .checkRegistrationForEvent(this.event.name, result)
-          .subscribe(e => this.isRegistered = e);
+        if(result == 'ALL')
+          this.eventService
+            .checkRegistrationForEventForAll(this.event.name)
+            .subscribe((e: ComunitecaEvent[]) => {
+              console.log(e[0].registeredUsers);
+            });
+        else
+          this.eventService
+            .checkRegistrationForEvent(this.event.name, result)
+            .subscribe(e => this.isRegistered = e);
       }
     });
   }
@@ -42,7 +49,7 @@ export class EventEntryComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result)
+      if(result && result != "ALL")
       {
         this.eventService.registerPersonForEvent(this.event.name, result).subscribe();
       }

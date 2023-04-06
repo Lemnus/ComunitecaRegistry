@@ -12,6 +12,7 @@ import {CommonModule} from "@angular/common";
 import { UserEventRegistrationComponent } from './components/modal/user-event-registration/user-event-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -22,15 +23,16 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dia
     UserEventRegistrationComponent
   ],
   entryComponents: [UserEventRegistrationComponent],
-  imports: [
-    MatDialogModule,
-    BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-  ],
+    imports: [
+        MatDialogModule,
+        BrowserModule,
+        CommonModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatCheckboxModule,
+    ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
