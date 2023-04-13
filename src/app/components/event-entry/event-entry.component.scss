@@ -1,10 +1,11 @@
 .body {
   min-width: 220px;
-  min-height: 180px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  width: 100%;
 
   .all-users {
     position: absolute;
