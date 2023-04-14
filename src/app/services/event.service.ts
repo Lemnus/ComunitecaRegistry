@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {ComunitecaEvent} from "../model/Event";
+import {SnackBarService} from "./SnackBarService";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class EventService {
   private result : ComunitecaEvent[] = [];
   private events: Subject<ComunitecaEvent[]> = new BehaviorSubject(this.result);
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private snackBar: SnackBarService) {
     this.updateEvents();
   }
 
@@ -20,7 +21,10 @@ export class EventService {
   }
 
   registerNewEvent(event: ComunitecaEvent) {
-    this.api.post('event', event).subscribe(() => this.updateEvents());
+    this.api.post('event', event).subscribe(
+      () => this.updateEvents(),
+      () => this.snackBar.onError('Something went wrong when registering the event')
+    );
   }
 
   registerPersonForEvent(eventName: string, userName: string): Observable<any> {
@@ -37,9 +41,8 @@ export class EventService {
 
   private updateEvents() {
     this.api.get('events').subscribe(
-      (e: ComunitecaEvent[]) => {
-        this.events.next(e as ComunitecaEvent[]);
-      }
+      (e: ComunitecaEvent[]) => this.events.next(e as ComunitecaEvent[]),
+      () => this.snackBar.onError('Something went wrong when retrieving events')
     );
   }
 }

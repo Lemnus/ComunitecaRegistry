@@ -6,6 +6,7 @@ import {EventService} from "../../services/event.service";
 import {
   AllRegisteredUsersModalComponent
 } from "../modal/all-registered-users-modal/all-registered-users-modal.component";
+import {SnackBarService} from "../../services/SnackBarService";
 
 @Component({
   selector: 'app-event-entry',
@@ -19,7 +20,7 @@ export class EventEntryComponent {
 
   isRegistered: boolean = false;
 
-  constructor(private dialog: MatDialog, private eventService: EventService) {
+  constructor(private dialog: MatDialog, private eventService: EventService, private snackBar: SnackBarService) {
   }
 
   checkRegistration() {
@@ -33,7 +34,10 @@ export class EventEntryComponent {
       {
         this.eventService
             .checkRegistrationForEvent(this.event.name, result)
-            .subscribe(e => this.isRegistered = e);
+            .subscribe({
+              next: (e) => this.isRegistered = e,
+              error: () => this.snackBar.onError('Something went wrong when checking registration')
+            });
       }
     });
   }
@@ -47,7 +51,10 @@ export class EventEntryComponent {
     dialogRef.afterClosed().subscribe(result => {
       if(result && result != "ALL")
       {
-        this.eventService.registerPersonForEvent(this.event.name, result).subscribe();
+        this.eventService.registerPersonForEvent(this.event.name, result).subscribe({
+          next: () => {},
+          error: () => this.snackBar.onError('Something went wrong when registering')
+        });
       }
     });
   }
@@ -55,9 +62,10 @@ export class EventEntryComponent {
   getAllRegisteredUsers() {
     this.eventService
       .checkRegistrationForEventForAll(this.event.name)
-      .subscribe((e: ComunitecaEvent[]) => {
-        this.openAllRegisteredUsersModal(e[0].registeredUsers);
-      });
+      .subscribe({
+          next: (e: ComunitecaEvent[]) => this.openAllRegisteredUsersModal(e[0].registeredUsers),
+          error: () => this.snackBar.onError('Something went wrong when retrieving registration')
+        });
   }
 
   private openAllRegisteredUsersModal(users: any) {
