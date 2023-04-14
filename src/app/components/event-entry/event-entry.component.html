@@ -5,7 +5,7 @@
       class="all-users"
       matTooltip="Get all registered users"
     >contacts</mat-icon>
-    <p>Name: {{event.name}}</p>
+    <p class="text">Name: {{event.name}}</p>
     <p>Date: {{event.date}}</p>
     <p *ngIf="event.notes && event.notes.length">Notes: {{event.notes}}</p>
     <p *ngIf="isRegistered" class="registered-confirmation">Registered</p>
